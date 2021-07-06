@@ -11,6 +11,7 @@ func newDeck() deck {
 
 	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
 	cardValues := []string{"Ace", "Two", "Three", "Four"}
+	// cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 
 	for _, cardSuit := range cardSuits {
 		for _, cardValue := range cardValues {
@@ -22,7 +23,12 @@ func newDeck() deck {
 
 // Receiver
 func (d deck) print() {
-	for _, card := range d {
-		fmt.Println(card)
+	for i, card := range d {
+		fmt.Println(i, card)
 	}
+}
+
+// Return multiple value
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:] // Example deck[0:4], deck[4:]
 }
