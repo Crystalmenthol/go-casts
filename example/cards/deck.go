@@ -7,28 +7,34 @@ import "fmt"
 type deck []string
 
 func newDeck() deck {
-	cards := deck{}
+	// Initializer createdCards with empty slice of type deck
+	createdCards := deck{}
 
 	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
 	cardValues := []string{"Ace", "Two", "Three", "Four"}
 	// cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 
+	// Leave index of each iteration with _ 
+	// When index is not to be use
 	for _, cardSuit := range cardSuits {
 		for _, cardValue := range cardValues {
-			cards = append(cards, cardValue + " of " + cardSuit)
+
+			createdCards = append(createdCards, cardValue + " of " + cardSuit)
 		}
 	}
-	return cards
+	return createdCards
 }
 
-// Receiver
+// Call with any deck of cards, and hand size to deal
+// Return multiple value (deck, deck)
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:] // Example deck[0:4], deck[4:]
+}
+
+// Call with any deck of cards
+// Receiver func for print string (name of each card)
 func (d deck) print() {
 	for i, card := range d {
 		fmt.Println(i, card)
 	}
-}
-
-// Return multiple value
-func deal(d deck, handSize int) (deck, deck) {
-	return d[:handSize], d[handSize:] // Example deck[0:4], deck[4:]
 }
