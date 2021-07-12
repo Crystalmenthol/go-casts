@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// Initailizer value for deck of cards
 	// By call newDeck(). It's return list of cards 
@@ -11,4 +13,7 @@ func main() {
 	
 	hand.print()
 	remainingCards.print()
+
+	fmt.Println(cards.toString())
+	cards.saveToFile("my_cads")
 }
