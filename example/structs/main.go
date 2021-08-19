@@ -27,13 +27,12 @@ func main() {
 
 	// &: Give me the memory address of the variable
 	// *: Give me the value of address
-	JimPoint := &Jim
-	JimPoint.updateName("Wut")
+	Jim.updateName("Wut")
 	Jim.print()
 }
 
-func (p *person) updateName(newFirstName string) {
-	(*p).firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 func (p person) print() {
