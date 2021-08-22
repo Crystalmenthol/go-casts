@@ -1,7 +1,6 @@
 package main
 
 import "fmt"
-
 type bots interface {
 	getGreeting() string
 }
@@ -30,10 +29,6 @@ func main() {
 func printGreeting(b bots) {
 	fmt.Println(b.getGreeting())
 }
-
-// func printGreeting(sb spanishBot) {
-// 	fmt.Println(sb.getGreeting())
-// }
 
 func (englishBot) getGreeting() string {
 	// 	VERY custom logic for generating an english greeting
