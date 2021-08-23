@@ -21,8 +21,8 @@ func main() {
 		go checkLink(url, c)
 	}
 
-	for i := 0; i < len(urls); i++ {
-		fmt.Println(<- c)
+	for {
+		go checkLink(<- c, c)
 	}
 }
 
@@ -30,10 +30,10 @@ func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		log.Panic(err)
-		c <- "Might be down I think"
+		c <- link
 		return 
 	}
-	c <- "Yep its up!"
+	c <- link
 	fmt.Println(link, "is up!")
 
 }
